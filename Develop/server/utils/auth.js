@@ -1,39 +1,40 @@
+// Import necessary modules
+const { AuthenticationError } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
 
-// set token secret and expiration date
+// Set the secret key for JWT and token expiration time
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
+// Export module containing authentication middleware and token signing function
 module.exports = {
-  // function for our authenticated routes
-  authMiddleware: function (req, res, next) {
-    // allows token to be sent via  req.query or headers
-    let token = req.query.token || req.headers.authorization;
+  // Middleware to check and authenticate user based on JWT token
+  authMiddleware: function (context) {
+    // Extract the token from the request headers
+    const token = context.req.headers.authorization;
 
-    // ["Bearer", "<tokenvalue>"]
-    if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
-    }
-
+    // Check if token is missing, throw an AuthenticationError if yes
     if (!token) {
-      return res.status(400).json({ message: 'You have no token!' });
+      throw new AuthenticationError('You must be logged in!');
     }
 
-    // verify token and get user data out of it
     try {
+      // Verify the token using the secret key and set user data in the context
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
-      return res.status(400).json({ message: 'invalid token!' });
+      context.user = data;
+    } catch (err) {
+      // Log and throw an AuthenticationError if token verification fails
+      console.error('Invalid token', err);
+      throw new AuthenticationError('Invalid token!');
     }
-
-    // send to next endpoint
-    next();
   },
-  signToken: function ({ username, email, _id }) {
-    const payload = { username, email, _id };
 
+  // Sign a JWT token with user information
+  signToken: function ({ username, email, _id }) {
+    // Create a payload with user data
+    const payload = { username, email, _id };
+    
+    // Sign the payload using the secret key and set expiration time
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
