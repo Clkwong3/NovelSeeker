@@ -22,14 +22,15 @@ const typeDefs = `
   }
 
   type Query {
+    getSingleUser(id: ID): User
     me: User
   }
 
   type Mutation {
+    createUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
     saveBook(bookInput: BookInput!): User
-    removeBook(bookId: ID!): User
+    deleteBook(bookId: ID!): User
   }
 
   input BookInput {

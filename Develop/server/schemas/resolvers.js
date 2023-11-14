@@ -6,24 +6,45 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     // Resolver for the 'getSingleUser' query to retrieve a user by ID or username
-    getSingleUser: async ({ user = null, params }) => {
-      // Find a user by ID or username
-      const foundUser = await User.findOne({
-        $or: [
-          { _id: user ? user._id : params.id },
-          { username: params.username },
-        ],
-      });
-
-      // Throw an error if user is not found
-      if (!foundUser) {
-        throw new Error("Cannot find a user with this id!");
+    getSingleUser: async (_, { id, username }) => {
+      try {
+        // Find a user by ID or username
+        const foundUser = await User.findOne({
+          $or: [
+            { _id: id },
+            { username: username },
+          ],
+        });
+  
+        // Throw an error if user is not found
+        if (!foundUser) {
+          throw new Error("User not found");
+        }
+  
+        // Return the found user
+        return foundUser;
+      } catch (error) {
+        console.error(error);
+        throw new Error("Error fetching user");
       }
-
-      // Return the found user
-      return foundUser;
+    },
+  
+    // Resolver for the 'me' query to retrieve the currently authenticated user
+    me: async (_, __, { user }) => {
+      try {
+        // If there's a user in the context, return it
+        if (user) {
+          return user;
+        } else {
+          throw new Error("User not authenticated");
+        }
+      } catch (error) {
+        console.error(error);
+        throw new Error("Error fetching authenticated user");
+      }
     },
   },
+  
 
   Mutation: {
     // Resolver for the 'createUser' mutation to create a new user
