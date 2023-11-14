@@ -27,7 +27,7 @@ const startApolloServer = async () => {
   await server.start();
 
   // Middleware setup for handling URL-encoded and JSON requests
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
   // Use Apollo Server middleware for handling GraphQL requests, with authentication context
