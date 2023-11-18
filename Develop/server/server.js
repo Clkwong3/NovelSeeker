@@ -19,6 +19,13 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => {
+    // Extract the token from the Authorization header
+    const token = req.headers.authorization || "";
+    // Verify the token and add user information to the context
+    const user = authMiddleware(token);
+    return { user };
+  },
 });
 
 // Start Apollo Server
@@ -31,13 +38,8 @@ const startApolloServer = async () => {
   app.use(express.json());
 
   // Use Apollo Server middleware for handling GraphQL requests, with authentication context
-  app.use(
-    "/graphql",
-    expressMiddleware(server, {
-      context: authMiddleware,
-    })
-  );
-
+  app.use('/graphql', expressMiddleware(server));
+  
   // Serve static files and handle wildcard routes in production
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
