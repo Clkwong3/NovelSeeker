@@ -30,7 +30,139 @@ Provide a brief description of your project. What is it about? What problem does
 
 ## Technology Stack
 
-List the technologies, frameworks, and tools used in your project.
+### Root Package.json
+
+#### Project Commands/Scripts
+
+- **start:** Run the server using `node server/server.js`.
+- **develop:** Concurrently run server and client development environments.
+- **install:** Install server and client dependencies.
+- **build:** Build the client using `npm run build`.
+
+#### Dev Dependencies
+
+- **concurrently:** ^8.2.0
+  - Tool for running multiple commands concurrently during development.
+
+### Server Package.json
+
+#### Project Commands/Scripts
+
+- **start:** Run the server using `node server.js`.
+- **watch:** Run the server using nodemon for automatic restarts.
+
+#### Dependencies
+
+- **@apollo/server:** ^4.9.5
+
+  - Implements a GraphQL server for defining schemas and resolving queries.
+
+- **apollo-server-express:** ^3.6.2
+
+  - Integrates Apollo Server with Express for GraphQL with Express as the HTTP server.
+
+- **bcrypt:** ^5.0.0
+
+  - Library for hashing passwords, commonly used for secure password storage.
+
+- **express:** ^4.17.2
+
+  - Fast and minimalist webb framework for Node.js, simplifying building robust web applications.
+
+- **graphql:** ^16.6.0
+
+  - Query language and runtime for APIs, often used with Apollo Server for GraphQL.
+
+- **jsonwebtoken:** ^8.5.1
+
+  - Generates and verifies JSON Web Tokens (JWT) for user authentication and authorization.
+
+- **mongoose:** ^7.0.2
+
+  - Object Data Modeling (ODM) library for MongoDB and Node.js, providing schema-based data modeling.
+
+#### Dev Dependencies
+
+- **nodemon:** ^2.0.3
+
+  - Utility that monitors changes in Node.js applications and automatically restarts the server during development.
+
+### Client Package.json
+
+#### Project Commands/Scripts
+
+- **dev:** Run Vite for development.
+- **build:** Build the client using Vite.
+- **lint:** Run ESLint for linting.
+- **preview:** Preview the client using Vite.
+
+#### Dependencies
+
+- **@apollo/client:** ^3.7.14
+
+  - Client library for interacting with a GraphQL server, facilitating queries and mutations.
+
+- **bootstrap:** ^5.2.3
+
+  - Front-end framework for responsive and visually appealing designs.
+
+- **graphql:** ^16.6.0
+
+  - Query language and runtime for APIs, commonly used with Apollo Client for GraphQL.
+
+- **jwt-decode:** ^3.1.2
+
+  - Library for decoding JSON Web Tokens (JWT) on the client side, useful for authentication.
+
+- **react:** ^18.2.0
+
+  - JavaScript library for building user interfaces and managing application state.
+
+- **react-bootstrap:** ^2.7.4
+
+  - React implementation of the Bootstrap framework, offering pre-designed components.
+
+- **react-dom:** ^18.2.0
+
+  - Entry point for the React DOM library, enabling rendering React components in the browser.
+
+- **react-router-dom:** ^6.11.2
+
+  - Library for adding routing functionality to React applications.
+
+#### Dev Dependencies
+
+- **@types/react:** ^18.0.28
+
+  - Type definitions for React, enhancing development with type information and autocompletion.
+
+- **@types/react-dom:** ^18.0.11
+
+  - Type definitions for React DOM, providing type information for React DOM-specific features.
+
+- **@vitejs/plugin-react:** ^4.0.0
+
+  - Vite plugin enabling React support, particularly useful for fast development with features like hot module replacement.
+
+- **eslint:** ^8.38.0
+
+  - Tool for identifying and fixing problems in JavaScript code, ensuring code quality and consistency.
+
+- **eslint-plugin-react:** ^7.32.2
+
+  - ESLint plugin for React, providing rules and configurations for best practices.
+
+- **eslint-plugin-react-hooks:** ^4.6.0
+
+  - ESLint plugin enforcing rules related to React Hooks usage.
+
+- **eslint-plugin-react-refresh:** ^0.3.4
+
+  - ESLint plugin related to React Refresh, providing rules for faster development.
+
+- **vite:** ^4.3.2
+
+  - Fast build tool for modern web development, particularly effective for React projects with features like lightning-fast hot module replacement.
 
 ## Installation
 
