@@ -1,8 +1,9 @@
 // Import necessary React components and hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+
 import Auth from "../utils/auth";
 
 // Functional component for the signup form
@@ -21,7 +22,16 @@ const SignupForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // UseMutation hook for the ADD_USER mutation from Apollo Client
-  const [AddUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  // UseEffect to handle errors and show/hide the alert accordingly
+  useEffect(() => {
+    if (error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [error]);
 
   // Event handler for input changes in the form fields
   const handleInputChange = (event) => {
@@ -44,9 +54,9 @@ const SignupForm = () => {
     try {
       // Make a request to the server to add a new user using the AddUser mutation
       // Destructure the 'data' property from the response
-      const { data } = await AddUser({
+      const { data } = await addUser({
         // Pass the user form data as variables to the AddUser mutation
-        variables: userFormData,
+        variables: { ...userFormData },
       });
 
       // Log in the user after a successful signup
@@ -54,7 +64,6 @@ const SignupForm = () => {
     } catch (err) {
       // Log and show an alert if there's an error during signup
       console.error(err);
-      setShowAlert(true);
     }
 
     // Reset form data after submission
