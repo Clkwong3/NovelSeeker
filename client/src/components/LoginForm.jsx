@@ -1,5 +1,5 @@
 // Import necessary React components and hooks
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 // Import the useMutation hook and LOGIN_USER mutation
@@ -89,7 +89,7 @@ const LoginForm = () => {
         <Form.Group className="mb-3">
           <Form.Label htmlFor="email">Email</Form.Label>
           <Form.Control
-            type="email"  // Changed type to 'email' for better validation
+            type="email" // Changed type to 'email' for better validation
             placeholder="Your email"
             name="email"
             onChange={handleInputChange}

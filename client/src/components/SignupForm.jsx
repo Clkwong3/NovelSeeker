@@ -1,6 +1,8 @@
 // Import necessary React components and hooks
 import { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
+
+// Import the useMutation hook and ADD_USER mutation
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
