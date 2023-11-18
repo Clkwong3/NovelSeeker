@@ -1,11 +1,19 @@
+// Import necessary dependencies and components from libraries
 import React, { useState, useEffect } from "react";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+
+// Import necessary functionality from Apollo Client for mutations
 import { useMutation } from "@apollo/client";
 import { SAVE_BOOK } from "../utils/mutations";
+
+// Import authentication utility from custom Auth module
 import Auth from "../utils/auth";
+
+// Import utility functions for Google Books API and local storage
 import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 
+// Functional component for searching and saving books
 const SearchBooks = () => {
   // State to hold returned Google API data
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -14,6 +22,7 @@ const SearchBooks = () => {
   // State to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
+  // UseMutation hook for the SAVE_BOOK mutation from Apollo Client
   const [saveBook, { error }] = useMutation(SAVE_BOOK);
 
   // useEffect to save `savedBookIds` list to localStorage on component unmount
@@ -25,6 +34,7 @@ const SearchBooks = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    // Check if search input is empty
     if (!searchInput) {
       return false;
     }
@@ -33,21 +43,33 @@ const SearchBooks = () => {
       // Search Google Books API
       const response = await searchGoogleBooks(searchInput);
 
+      // Check if the API response is successful
       if (!response.ok) {
         throw new Error("Something went wrong!");
       }
 
+      // Extract relevant data from the Google Books API response and map it to the required format
       const { items } = await response.json();
 
-      // Map API data to required format
+      // Map each book item from the API response to the desired format
       const bookData = items.map((book) => ({
+        // Extract the unique book ID
         bookId: book.id,
+
+        // Extract authors; set to ["No author to display"] if not available
         authors: book.volumeInfo.authors || ["No author to display"],
+
+        // Extract the book title
         title: book.volumeInfo.title,
+
+        // Extract the book description
         description: book.volumeInfo.description,
+
+        // Extract the book thumbnail image URL; set to an empty string if not available
         image: book.volumeInfo.imageLinks?.thumbnail || "",
       }));
 
+      // Update the state with the searched book data and reset the search input
       setSearchedBooks(bookData);
       setSearchInput("");
     } catch (err) {
@@ -60,28 +82,31 @@ const SearchBooks = () => {
     // Find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
-    // Get token
+    // Get authentication token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+    // Check if the token is available
     if (!token) {
       return false;
     }
 
     try {
-      // Save book to the database
+      // Save the book to the database using the SAVE_BOOK mutation
       const { data } = await saveBook({
         variables: { bookInput: { ...bookToSave } },
       });
 
-      // If book successfully saves to user's account, save book id to state
+      // If the book is successfully saved, update the saved book ids in the state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
     }
   };
 
+  // JSX rendering for the search and display of books
   return (
     <>
+      {/* Search Form */}
       <div className="text-light bg-dark p-5">
         <Container>
           <h1>Search for Books!</h1>
@@ -107,6 +132,7 @@ const SearchBooks = () => {
         </Container>
       </div>
 
+      {/* Display Search Results */}
       <Container>
         <h2 className="pt-5">
           {searchedBooks.length
@@ -118,6 +144,7 @@ const SearchBooks = () => {
             return (
               <Col md="4" key={book.bookId}>
                 <Card border="dark">
+                  {/* Display Book Cover */}
                   {book.image ? (
                     <Card.Img
                       src={book.image}
@@ -125,10 +152,14 @@ const SearchBooks = () => {
                       variant="top"
                     />
                   ) : null}
+
+                  {/* Display Book Information */}
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
                     <p className="small">Authors: {book.authors}</p>
                     <Card.Text>{book.description}</Card.Text>
+
+                    {/* Save Book Button */}
                     {Auth.loggedIn() && (
                       <Button
                         disabled={savedBookIds?.some(
