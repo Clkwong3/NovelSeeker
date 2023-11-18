@@ -5,27 +5,11 @@ const { signToken } = require("../utils/auth");
 // Define GraphQL resolvers for Query and Mutation
 const resolvers = {
   Query: {
-    // Resolver for the 'getSingleUser' query to retrieve a user by ID
-    getSingleUser: async (_parent, { id, username }) => {
-      // Find a user by ID or username
-      const foundUser = await User.findOne({
-        $or: [{ _id: id }, { username: username }],
-      });
-
-      // Throw an error if user is not found
-      if (!foundUser) {
-        throw new Error("User not found");
-      }
-
-      // Return the found user
-      return foundUser;
-    },
-
     // Resolver for the 'me' query to retrieve the currently authenticated user
     me: async (_, __, { user }) => {
-      // If there's a user in the context, return it
+      // If there's a user in the context, return user data
       if (user) {
-        return user;
+        return await User.findById(user._id);
       } else {
         throw new Error("User not authenticated");
       }
@@ -40,7 +24,7 @@ const resolvers = {
 
       // Throw an error if user creation fails
       if (!user) {
-        throw new Error("Something is wrong!");
+        throw new Error("Failed to create user");
       }
 
       // Generate a token for the new user
@@ -51,23 +35,21 @@ const resolvers = {
     },
 
     // Resolver for the 'login' mutation to authenticate and generate a token for a user
-    login: async (_, { username, email}) => {
-      // Find a user by username or email
-      const user = await User.findOne({
-        $or: [{ username: username.username }, { email: email.email }],
-      });
+    login: async (_, { email, password }) => {
+      // Find a user by email
+      const user = await User.findOne({ email });
 
       // Throw an error if user is not found
       if (!user) {
-        throw new Error("Can't find this user");
+        throw new Error("User not found");
       }
 
       // Check if the provided password is correct
-      const correctPw = await user.isCorrectPassword(body.password);
+      const correctPw = await user.isCorrectPassword(password);
 
       // Throw an error if the password is incorrect
       if (!correctPw) {
-        throw new Error("Wrong password!");
+        throw new Error("Incorrect password");
       }
 
       // Generate a token for the authenticated user
@@ -78,28 +60,38 @@ const resolvers = {
     },
 
     // Resolver for the 'saveBook' mutation to add a book to a user's saved books
-    saveBook: async ({ user, body }) => {
+    saveBook: async (_, { bookInput }, { user }) => {
       // Add the book to the user's saved books and return the updated user
       const updatedUser = await User.findOneAndUpdate(
+        // Find the user by their unique identifier (user._id)
         { _id: user._id },
-        { $addToSet: { savedBooks: body } },
+        // Use $addToSet to add the book to the savedBooks array if not already present
+        { $addToSet: { savedBooks: bookInput } },
+        // Options for the update operation:
+        // - Set { new: true } to return the modified user document
+        // - Set { runValidators: true } to run validators defined in the user model
         { new: true, runValidators: true }
       );
+
       return updatedUser;
     },
 
     // Resolver for the 'deleteBook' mutation to remove a book from a user's saved books
-    deleteBook: async ({ user, params }) => {
+    deleteBook: async (_, { bookId }, { user }) => {
       // Remove the specified book from the user's saved books and return the updated user
       const updatedUser = await User.findOneAndUpdate(
+        // Find the user by their unique identifier (user._id)
         { _id: user._id },
-        { $pull: { savedBooks: { bookId: params.bookId } } },
+        // Use $pull to remove the book with the specified bookId from the savedBooks array
+        { $pull: { savedBooks: { bookId } } },
+        // Options for the update operation:
+        // - Set { new: true } to return the modified user document
         { new: true }
       );
 
       // Throw an error if the user is not found
       if (!updatedUser) {
-        throw new Error("Couldn't find user with this id!");
+        throw new Error("User not found");
       }
 
       // Return the updated user
