@@ -335,7 +335,15 @@ Include any relevant links, such as the project's website, documentation, or liv
 
 ## Credits
 
-Acknowledge any contributors, libraries, or resources you used in your project.
+This project was developed by [Clarice Kwong](https://github.com/Clkwong3).
+
+**Code Attribution:**
+
+I want to recognize that certain elements of this project were derived from a class activity, specifically Activity 25 - 26: Stu_Resolver-Context within Module 21-MERN. The class materials and discussions significantly contributed to shaping the development and design of the project.
+
+**Tutoring Session Influence:**
+
+I would like to extend my appreciation for the valuable guidance and insights received during tutoring sessions. These sessions played a crucial role in offering solutions, recommending enhancements, and influencing certain aspects of the project's development.
 
 ## Contributing
 
