@@ -347,7 +347,47 @@ I would like to extend my appreciation for the valuable guidance and insights re
 
 ## Contributing
 
-If you'd like to contribute to the project with code or other contributions, we welcome your participation. Provide instructions for how others can do so.
+If you'd like to contribute to the project with code or other contributions, here's how you can get started:
+
+1. **Fork the Repository:** Start by forking the project's repository to your GitHub account.
+
+2. **Clone the Repository:** Clone your forked repository to your local development environment.
+
+   ```
+   git clone git@github.com:Clkwong3/NovelSeeker.git
+   ```
+
+3. **Create a New Branch:** Create a new branch for your contribution.
+
+   ```
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Make Changes:** Make your desired changes or contributions.
+
+5. **Test Your Changes:** Ensure that your changes do not introduce any new issues and pass all existing tests.
+
+6. **Commit Your Changes:** Commit your changes with a clear and concise commit message.
+
+   ```
+   git commit -m "Add feature: your feature description"
+   ```
+
+7. **Push to Your Repository:** Push your changes to your forked repository.
+
+   ```
+   git push origin feature/your-feature-name
+   ```
+
+8. **Create a Pull Request:** Go to the project's [Pull Requests](https://github.com/Clkwong3/NovelSeeker/pulls) page, and click on "New Pull Request."
+
+9. **Select the Base Branch:** Choose the appropriate base branch, typically the main branch of the project.
+
+10. **Review and Submit:** Review your changes, provide a clear description of your contribution, and submit the pull request.
+
+The project creator will review your pull request and provide feedback.
+
+Thank you for your interest in contributing to the project!
 
 ## Report Issue
 
