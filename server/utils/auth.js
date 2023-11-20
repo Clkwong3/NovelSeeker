@@ -2,9 +2,14 @@
 const { GraphQLError } = require("graphql");
 const jwt = require("jsonwebtoken");
 
-// Set the secret key for JWT (JSON Web Token) and its expiration time
-const secret = "mysecretssshhhhhhh";
+// Set the expiration time for JWT (JSON Web Token)
 const expiration = "2h";
+
+// Use dotenv to load the secret from the .env file
+require('dotenv').config();
+
+// Extract the secret key from the environment variables
+const secret = process.env.SECRET_KEY;
 
 // Export an AuthenticationError instance with specific details for GraphQL
 module.exports = {
