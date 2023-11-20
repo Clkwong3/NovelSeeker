@@ -166,7 +166,56 @@ Provide a brief description of your project. What is it about? What problem does
 
 ## Installation
 
-Explain how to install and set up your project. Include any prerequisites and step-by-step instructions.
+### Prerequisites
+
+Before proceeding with the installation, make sure to have the following prerequisites installed in your system:
+
+1. **Node.js and npm:** Ensure that Node.js and npm are installed. Download and install them from Node.js [official website](https://nodejs.org/en).
+
+2. **MongoDB:** This project uses MongoDB as the database, make sure to have MongoDB installed and running. Download MongoDB from the [official website](https://www.mongodb.com/try/download/community).
+
+#### Step-by-Step Instructions
+
+1. **Clone the Repository:**
+
+   ```zsh
+   git clone git@github.com:Clkwong3/NovelSeeker.git
+   ```
+
+2. **Install Dependencies:**
+
+   ```
+   # Install server dependencies
+   cd server
+   npm install
+
+   # Install client dependencies
+   cd ../client
+   npm install
+   ```
+
+3. **Configure Database Connection:**
+
+   - In the `server/config/connection.js` file, adjust the MongoDB connection URI as needed.
+
+4. **Run the Project:**
+
+   - Run the server side by executing the following command from the server directory:
+      ```
+      cd server
+      npm start
+      ```
+
+   - Run the client side by executing the following command from the client directory:
+      ```
+      cd client
+      npm run dev
+      ```
+
+   - Run the both sides concurrently using the following command from the root directory:
+      ```
+      npm run develop
+      ```
 
 ## Usage
 
