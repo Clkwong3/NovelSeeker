@@ -273,7 +273,40 @@ Now, NovelSeeker should be up and running on your local machine. Access it throu
 
 ## Usage
 
-Provide usage instructions and examples. How can someone use your project? Include code samples if necessary.
+NovelSeeker simplifies the process of discovering, saving, and organizing your favorite novels. Follow these steps to effectively use the application:
+
+1. **Explore Books:**
+
+    - Use the search bar to explore a vast collection of books powered by the Google Books API.
+    - Enter keywords, titles, authors, or genres to find books that match your interests.
+
+    ![Animation shows "star wars" typed into a search box and books about Star Wars appearing as results.](./Assets/21-mern-homework-demo-01.gif)
+
+2. **Save Favorites:**
+
+    - Upon finding a book of interest, click on it to view detailed information.
+    - Click the "Save This Book!" button to add the book to your personalized library.
+
+    ![Animation shows user clicking "Save This Book!" button to save books that appear in search results. The button label changes to "Book Already Saved" after it is clicked and the book is saved.](./Assets/21-mern-homework-demo-02.gif)
+
+
+3. **Manage Your Library:**
+
+    -  Navigate to the "See Your Books" section to access your saved books.
+    -  Here, you can view and remove books from your library.
+
+    ![The Viewing User's Books page shows the books that the user has saved.](./Assets/21-mern-homework-demo-03.gif)
+
+4. **User Authentication:**
+
+   - For a personalized experience, sign up or log in to NovelSeeker using the "Login/Sign Up" button.
+   - Authentication ensures secure access to your saved book collection across sessions.
+
+    ![The Login/Sign Up Button Location.](./Assets/login-signup.png)
+
+5. **Responsive Design:**
+
+    -  Enjoy a seamless experience on various devices, including desktops, tablets, and smartphones.
 
 ## Testing
 
