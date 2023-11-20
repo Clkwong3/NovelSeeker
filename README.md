@@ -267,13 +267,17 @@ Follow these step-by-step instructions to set up NovelSeeker on your local machi
    - In `server/utils/auth.js`, access the secret key using the `process.env`:
 
      ```javascript
-     const jwt = require('jsonwebtoken');
-     require('dotenv').config();
+     const jwt = require("jsonwebtoken");
+     require("dotenv").config();
 
      function generateToken(user) {
-       return jwt.sign({ id: user._id, username: user.username }, process.env.SECRET_KEY, {
-         expiresIn: '1h',
-       });
+       return jwt.sign(
+         { id: user._id, username: user.username },
+         process.env.SECRET_KEY,
+         {
+           expiresIn: "1h",
+         }
+       );
      }
 
      module.exports = generateToken;
@@ -322,41 +326,41 @@ NovelSeeker simplifies the process of discovering, saving, and organizing your f
     **Sign Up:**
     ![The Sign Up Form](./Assets/signup-form.png)
 
-2. **Explore Books:**
+2.  **Explore Books:**
 
-   - Use the search bar to explore a vast collection of books powered by the Google Books API.
-   - Enter keywords, titles, authors, or genres to find books that match your interests.
-     ![Indiana Jones in the search bar](./Assets/search-Indiana-Jones.png)
+    - Use the search bar to explore a vast collection of books powered by the Google Books API.
+    - Enter keywords, titles, authors, or genres to find books that match your interests.
+      ![Indiana Jones in the search bar](./Assets/search-Indiana-Jones.png)
 
-3. **Save Favorites:**
+3.  **Save Favorites:**
 
-   - Upon finding a book of interest, click the "Save This Book!" button to add the book to your personalized library.
+    - Upon finding a book of interest, click the "Save This Book!" button to add the book to your personalized library.
 
-   **Before:**
-   ![Save This Book Location](./Assets/save-button-location.png)
+    **Before:**
+    ![Save This Book Location](./Assets/save-button-location.png)
 
-   **After:**
-   ![After the save button is clicked](./Assets/after-button-clicked.png)
+    **After:**
+    ![After the save button is clicked](./Assets/after-button-clicked.png)
 
-4. **Manage Your Library:**
+4.  **Manage Your Library:**
 
-   - Navigate to the "See Your Books" section to access your saved books.
-     ![See Your Books Location](./Assets/see-your-books.png)
+    - Navigate to the "See Your Books" section to access your saved books.
+      ![See Your Books Location](./Assets/see-your-books.png)
 
-   - Here, you can view and remove books from your library.
-     ![Personal Page](./Assets/personal-library.png)
+    - Here, you can view and remove books from your library.
+      ![Personal Page](./Assets/personal-library.png)
 
-5. **Responsive Design:**
+5.  **Responsive Design:**
 
-   - Enjoy a seamless experience on various devices, including desktops, tablets, and smartphones.
+    - Enjoy a seamless experience on various devices, including desktops, tablets, and smartphones.
 
-     **iPhone Pro:**
+      **iPhone Pro:**
 
-     ![iPhone SE](./Assets/iPhone-Pro.png)
+      ![iPhone SE](./Assets/iPhone-Pro.png)
 
-     **Samsung Galaxy:**
+      **Samsung Galaxy:**
 
-     ![Samsung Galaxy](./Assets/Samsung-Galaxy.png)
+      ![Samsung Galaxy](./Assets/Samsung-Galaxy.png)
 
 [Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
@@ -374,6 +378,7 @@ Ensure that all project dependencies are installed by following the [Installatio
 
 1. Open your terminal.
 2. Navigate to the `server` directory:
+
    ```
    cd NovelSeeker/server
    ```
@@ -398,8 +403,41 @@ Feel free to contribute additional tests or enhance existing ones to improve the
 [Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
 ## Links
+Here is a small collection of helpful links that helped my understanding of GraphQL, covering topics from Apollo Server documentation to in-depth tutorials on building schemas and refactoring practices. You will also find YouTube playlists on GraphQL, JWT authentication, and a live demo of the NovelSeeker project deployed on Heroku for practical insights.
 
-Include any relevant links, such as the project's website, documentation, or live demo.
+### GraphQL Tutorials
+
+- **Apollo Server Docs:**
+  - [Resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/) - Learn about GraphQL resolvers and how they handle data fetching.
+  - [Building a Schema](https://www.apollographql.com/tutorials/fullstack-quickstart/02-building-a-schema) - Follow a tutorial on building a GraphQL schema for a full-stack application.
+
+- **GraphQL Docs:**
+  - [Schemas and Types](https://graphql.org/learn/schema/) - Explore the basics of GraphQL schemas and types.
+
+- **Blogs and Articles:**
+  - [Refactor Schemas](https://www.moonhighway.com/articles/refactoring-graphql-schemas/) - Read about best practices for refactoring GraphQL schemas.
+  - [From REST to GraphQL](https://blog.christophervachon.com/from-rest-to-graphql-part-1/) - Understand the transition from REST APIs to GraphQL.
+  - [Migrate from REST APIs to GraphQL](https://blog.bitsrc.io/migrating-existing-rest-apis-to-graphql-2c5de3db647d) - Get insights on migrating existing REST APIs to GraphQL.
+  - [Authentication and Authorization in GraphQL](https://daily.dev/blog/authentication-and-authorization-in-graphql) - Explore authentication and authorization practices in GraphQL.
+
+### YouTube Tutorials
+
+- **GraphQL:**
+  - [Beginner to Expert](https://www.youtube.com/playlist?list=PLpPqplz6dKxXICtNgHY1tiCPau_AwWAJU) - A comprehensive playlist for beginners to experts in GraphQL.
+  - [GraphQL Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9iK6Qhn-QLcXCXPQUov1U7f) - Follow a tutorial on GraphQL.
+  - [GraphQL Tutorial Updated](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y) - An updated version of the GraphQL tutorial.
+
+- **JWT:**
+  - [Playlist for JWT](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT) - Explore JSON Web Tokens (JWT) in this playlist.
+  - [JWT Authentication](https://www.youtube.com/watch?v=enopDSs3DRw) - Learn about JWT authentication with Traversy Media.
+  - [MERN Stack Tutorial](https://www.youtube.com/watch?v=Ejg7es3ba2k) - A tutorial covering the MERN (MongoDB, Express.js, React, Node.js) stack.
+
+### Project Demo
+
+- [Heroku Deployment](https://warm-beyond-71834-7ceb3704c7cf.herokuapp.com/) - Explore the live demo of the NovelSeeker project on Heroku.
+
+
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
 ## Credits
 
