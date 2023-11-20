@@ -217,46 +217,52 @@ Follow these step-by-step instructions to set up NovelSeeker on your local machi
 1. **Clone the Repository:**
 
    Open your terminal and run the following command to clone the NovelSeeker repository:
+
    ```
    git clone git@github.com:Clkwong3/NovelSeeker.git
    ```
 
 2. **Install Dependencies:**
 
-    - Navigate into the server directory using the terminal:
-      ```
-      cd NovelSeeker/server
-      ```
+   - Navigate into the server directory using the terminal:
 
-    - Install server dependencies:
-      ```
-      npm install
-      ```
+     ```
+     cd NovelSeeker/server
+     ```
 
-    - Move back to the root directory and navigate into the client directory:
-      ```
-      cd ../client
-      ```
+   - Install server dependencies:
 
-    - Install client dependencies: 
-      ```
-      npm install
-      ```
+     ```
+     npm install
+     ```
+
+   - Move back to the root directory and navigate into the client directory:
+
+     ```
+     cd ../client
+     ```
+
+   - Install client dependencies:
+     ```
+     npm install
+     ```
 
 3. **Configure Database Connection:**
 
-   - Open the `server/config/connection.js` file in your preferred code editor. 
+   - Open the `server/config/connection.js` file in your preferred code editor.
    - Adjust the MongoDB connection URI as needed to match your local MongoDB setup.
 
 4. **Run the Project:**
 
    - To start the server, run the following command from the server directory:
+
      ```
      cd NovelSeeker/server
      npm start
      ```
 
    - To launch the client, run the following command from the client directory:
+
      ```
      cd NovelSeeker/client
      npm run dev
@@ -275,38 +281,55 @@ Now, NovelSeeker should be up and running on your local machine. Access it throu
 
 NovelSeeker simplifies the process of discovering, saving, and organizing your favorite novels. Follow these steps to effectively use the application:
 
-1. **Explore Books:**
+1.  **User Authentication:**
 
-    - Use the search bar to explore a vast collection of books powered by the Google Books API.
-    - Enter keywords, titles, authors, or genres to find books that match your interests.
+- For a personalized experience, sign up or log in to NovelSeeker using the "Login/Sign Up" button.
+- Authentication ensures secure access to your saved book collection across sessions.
 
-    ![Animation shows "star wars" typed into a search box and books about Star Wars appearing as results.](./Assets/21-mern-homework-demo-01.gif)
+**Click Here:**
+![The Login/Sign Up Button Location](./Assets/login-signup-location.png)
 
-2. **Save Favorites:**
+**Login:**
+![The Login Form](./Assets/login-form.png)
 
-    - Upon finding a book of interest, click on it to view detailed information.
-    - Click the "Save This Book!" button to add the book to your personalized library.
+**Sign Up:**
+![The Sign Up Form](./Assets/signup-form.png)
 
-    ![Animation shows user clicking "Save This Book!" button to save books that appear in search results. The button label changes to "Book Already Saved" after it is clicked and the book is saved.](./Assets/21-mern-homework-demo-02.gif)
+2. **Explore Books:**
 
+   - Use the search bar to explore a vast collection of books powered by the Google Books API.
+   - Enter keywords, titles, authors, or genres to find books that match your interests.
+     ![Indiana Jones in the search bar](./Assets/search-Indiana-Jones.png)
 
-3. **Manage Your Library:**
+3. **Save Favorites:**
 
-    -  Navigate to the "See Your Books" section to access your saved books.
-    -  Here, you can view and remove books from your library.
+   - Upon finding a book of interest, click the "Save This Book!" button to add the book to your personalized library.
 
-    ![The Viewing User's Books page shows the books that the user has saved.](./Assets/21-mern-homework-demo-03.gif)
+   **Before:**
+   ![Save This Book Location](./Assets/save-button-location.png)
 
-4. **User Authentication:**
+   **After:**
+   ![After the save button is clicked](./Assets/after-button-clicked.png)
 
-   - For a personalized experience, sign up or log in to NovelSeeker using the "Login/Sign Up" button.
-   - Authentication ensures secure access to your saved book collection across sessions.
+4. **Manage Your Library:**
 
-    ![The Login/Sign Up Button Location.](./Assets/login-signup.png)
+   - Navigate to the "See Your Books" section to access your saved books.
+     ![See Your Books Location](./Assets/see-your-books.png)
+
+   - Here, you can view and remove books from your library.
+     ![Personal Page](./Assets/personal-library.png)
 
 5. **Responsive Design:**
 
-    -  Enjoy a seamless experience on various devices, including desktops, tablets, and smartphones.
+   - Enjoy a seamless experience on various devices, including desktops, tablets, and smartphones.
+
+     **iPhone Pro:**
+
+     ![iPhone SE](./Assets/iPhone-Pro.png)
+
+     **Samsung Galaxy:**
+
+     ![Samsung Galaxy](./Assets/Samsung-Galaxy.png)
 
 ## Testing
 
