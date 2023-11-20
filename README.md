@@ -25,6 +25,7 @@ NovelSeeker is crafted with the purpose of providing a centralized hub for book 
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Testing](#testing)
 - [Links](#links)
 - [Credits](#credits)
 - [Contributing](#contributing)
@@ -80,14 +81,14 @@ NovelSeeker leverages a robust and versatile technology stack to ensure efficien
 
 #### Project Commands/Scripts
 
-- **start:** Launches the server using `node server.js`.
+- **test:** Launches the server using `node server.js`.
 - **watch:** Operates the server using nodemon for automatic restarts.
 
 #### Dependencies
 
 - **@apollo/server:** ^4.9.5
 
-  - Implements a GraphQL server for defining schemas and resolving queries.
+  - Implements a GraphQL server for defining schemas and resolving queries. Used for server-side testing.
 
 - **apollo-server-express:** ^3.6.2
 
@@ -97,6 +98,10 @@ NovelSeeker leverages a robust and versatile technology stack to ensure efficien
 
   - Library for hashing passwords, commonly used for secure password storage.
 
+- **dotenv:** ^16.3.1
+
+  - Loads environment variables from a .env file into process.env, aiding in configuration management during development.
+
 - **express:** ^4.17.2
 
   - Fast and minimalist webb framework for Node.js, simplifying building robust web applications.
@@ -105,7 +110,7 @@ NovelSeeker leverages a robust and versatile technology stack to ensure efficien
 
   - Query language and runtime for APIs, often used with Apollo Server for GraphQL.
 
-- **jsonwebtoken:** ^8.5.1
+- **jsonwebtoken:** ^9.0.2
 
   - Generates and verifies JSON Web Tokens (JWT) for user authentication and authorization.
 
@@ -248,7 +253,31 @@ Follow these step-by-step instructions to set up NovelSeeker on your local machi
 3. **Configure Database Connection:**
 
    - Open the `server/config/connection.js` file in your preferred code editor.
+
    - Adjust the MongoDB connection URI as needed to match your local MongoDB setup.
+
+   - Create a `.env` file in the `server` directory for storing sensitive information. Add the following:
+
+     ```env
+     SECRET_KEY=your_secret_key
+     ```
+
+     Replace `your_secret_key` with your actual secret key.
+
+   - In `server/utils/auth.js`, access the secret key using the `process.env`:
+
+     ```javascript
+     const jwt = require('jsonwebtoken');
+     require('dotenv').config();
+
+     function generateToken(user) {
+       return jwt.sign({ id: user._id, username: user.username }, process.env.SECRET_KEY, {
+         expiresIn: '1h',
+       });
+     }
+
+     module.exports = generateToken;
+     ```
 
 4. **Run the Project:**
 
@@ -281,17 +310,17 @@ NovelSeeker simplifies the process of discovering, saving, and organizing your f
 
 1.  **User Authentication:**
 
-- For a personalized experience, sign up or log in to NovelSeeker using the "Login/Sign Up" button.
-- Authentication ensures secure access to your saved book collection across sessions.
+    - For a personalized experience, sign up or log in to NovelSeeker using the "Login/Sign Up" button.
+    - Authentication ensures secure access to your saved book collection across sessions.
 
-**Click Here:**
-![The Login/Sign Up Button Location](./Assets/login-signup-location.png)
+    **Click Here:**
+    ![The Login/Sign Up Button Location](./Assets/login-signup-location.png)
 
-**Login:**
-![The Login Form](./Assets/login-form.png)
+    **Login:**
+    ![The Login Form](./Assets/login-form.png)
 
-**Sign Up:**
-![The Sign Up Form](./Assets/signup-form.png)
+    **Sign Up:**
+    ![The Sign Up Form](./Assets/signup-form.png)
 
 2. **Explore Books:**
 
@@ -328,6 +357,43 @@ NovelSeeker simplifies the process of discovering, saving, and organizing your f
      **Samsung Galaxy:**
 
      ![Samsung Galaxy](./Assets/Samsung-Galaxy.png)
+
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
+
+## Testing
+
+### Server-Side Testing
+
+NovelSeeker emphasizes testing on the server side using Apollo Server to ensure the reliability and functionality of its GraphQL implementation. Follow these steps to run the server-side tests:
+
+#### Prerequisites
+
+Ensure that all project dependencies are installed by following the [Installation](#installation) instructions.
+
+#### Running Server-Side Tests
+
+1. Open your terminal.
+2. Navigate to the `server` directory:
+   ```
+   cd NovelSeeker/server
+   ```
+
+3. Run the following command to test the back-end code on the sandbox:
+   ```
+   npm test
+   ```
+
+#### Testing Details
+
+The server-side tests cover aspects such as:
+
+- **GraphQL Schema:** Ensure that the GraphQL schema is correctly defined and follows the specified structure.
+
+- **Resolvers:** Validate the functionality of GraphQL resolvers, including proper data fetching and response handling.
+
+- **Authentication:** Verify the authentication logic, ensuring secure access to specific features.
+
+Feel free to contribute additional tests or enhance existing ones to improve the overall test coverage of the server-side functionality in NovelSeeker.
 
 [Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
