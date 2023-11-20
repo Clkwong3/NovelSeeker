@@ -2,7 +2,20 @@
 
 ## Overview
 
-Provide a concise and high-level introduction to the key aspects and objectives of your project. It should briefly cover what the project is, its main features, and its purpose.
+NovelSeeker is an innovative web application designed to simplify and enhance the experience of book enthusiasts by providing a platform to search, save, and organize their favorite novels. Leveraging the power of GraphQL, the application seamlessly integrates with the Google Books API to offer an extensive database of books.
+
+### Key Features
+
+- **Effortless Book Search:** Easily explore a vast collection of books using the intuitive search functionality powered by Google Books API.
+
+- **Personal Library Management:** Create and manage a personalized library by saving your favorite books with detailed information, including authors, descriptions, and cover images.
+
+- **User Authentication:** Securely register and log in to NovelSeeker to access personalized features, such as saving and retrieving your book collection.
+
+- **Responsive Design:** Enjoy a user-friendly experience across various devices, ensuring accessibility whether you're on a desktop, tablet, or smartphone.
+
+### Purpose
+NovelSeeker is crafted with the purpose of providing a centralized hub for book enthusiasts to discover, organize, and keep track of their favorite novels effortlessly. Whether you're an avid reader or just getting started, NovelSeeker simplifies the process of finding and cataloging books, making the literary journey enjoyable and organized. Explore, save, and rediscover the joy of reading with NovelSeeker.
 
 ## Table of Contents
 
@@ -18,15 +31,15 @@ Provide a concise and high-level introduction to the key aspects and objectives 
 - [Report Issue](#report-issue)
 - [License](#license)
 
-## Description
-
-Provide a brief description of your project. What is it about? What problem does it solve?
+ 
 
 ## Tools
 
 - **Node.js:** JavaScript runtime for server-side development.
 - **npm (Node Package Manager):** Package manager for Node.js to manage project dependencies.
 - **Git:** Version control system for tracking changes in the code.
+
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
 ## Technology Stack
 
@@ -164,6 +177,8 @@ Provide a brief description of your project. What is it about? What problem does
 
   - Fast build tool for modern web development, particularly effective for React projects with features like lightning-fast hot module replacement.
 
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
+
 ## Installation
 
 ### Prerequisites
@@ -201,21 +216,25 @@ Before proceeding with the installation, make sure to have the following prerequ
 4. **Run the Project:**
 
    - Run the server side by executing the following command from the server directory:
-      ```
-      cd server
-      npm start
-      ```
+
+     ```
+     cd server
+     npm start
+     ```
 
    - Run the client side by executing the following command from the client directory:
-      ```
-      cd client
-      npm run dev
-      ```
+
+     ```
+     cd client
+     npm run dev
+     ```
 
    - Run the both sides concurrently using the following command from the root directory:
-      ```
-      npm run develop
-      ```
+     ```
+     npm run develop
+     ```
+
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
 ## Usage
 
