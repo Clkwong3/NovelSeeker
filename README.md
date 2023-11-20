@@ -25,12 +25,10 @@ NovelSeeker is crafted with the purpose of providing a centralized hub for book 
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Testing](#testing)
 - [Links](#links)
 - [Credits](#credits)
 - [Contributing](#contributing)
 - [Report Issue](#report-issue)
-- [License](#license)
 
 ## Description
 
@@ -330,10 +328,6 @@ NovelSeeker simplifies the process of discovering, saving, and organizing your f
      **Samsung Galaxy:**
 
      ![Samsung Galaxy](./Assets/Samsung-Galaxy.png)
-
-## Testing
-
-Explain how to run tests or provide information on the testing process for your project.
 
 ## Links
 
