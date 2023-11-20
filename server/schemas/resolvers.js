@@ -1,6 +1,6 @@
 // Import necessary modules
 const { User } = require("../models");
-const { signToken } = require("../utils/auth");
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 // Define GraphQL resolvers for Query and Mutation
 const resolvers = {
@@ -11,7 +11,7 @@ const resolvers = {
       if (user) {
         return await User.findById(user._id);
       } else {
-        throw new Error("User not authenticated");
+        throw new AuthenticationError("User not authenticated");
       }
     },
   },
@@ -24,7 +24,7 @@ const resolvers = {
 
       // Throw an error if user creation fails
       if (!user) {
-        throw new Error("Failed to create user");
+        throw new AuthenticationError("Failed to create user");
       }
 
       // Generate a token for the new user
@@ -41,7 +41,7 @@ const resolvers = {
 
       // Throw an error if user is not found
       if (!user) {
-        throw new Error("User not found");
+        throw new AuthenticationError("User not found");
       }
 
       // Check if the provided password is correct
@@ -49,7 +49,7 @@ const resolvers = {
 
       // Throw an error if the password is incorrect
       if (!correctPw) {
-        throw new Error("Incorrect password");
+        throw new AuthenticationError("Incorrect password");
       }
 
       // Generate a token for the authenticated user
@@ -91,7 +91,7 @@ const resolvers = {
 
       // Throw an error if the user is not found
       if (!updatedUser) {
-        throw new Error("User not found");
+        throw new AuthenticationError("User not found");
       }
 
       // Return the updated user
