@@ -37,45 +37,53 @@ NovelSeeker is crafted with the purpose of providing a centralized hub for book 
 NovelSeeker is a web application designed to cater to the needs of book enthusiasts, offering a solution to the common challenge of managing and exploring a diverse collection of books. The application seamlessly integrates with the Google Books API, providing users with a convenient platform to search for, save, and organize their favorite novels.
 
 ### What is it about?
+
 NovelSeeker revolves around simplifying the process of discovering and managing books. It acts as a bridge between users and the extensive Google Books database, allowing them to explore a wide range of titles, authors, and genres.
 
 ### What problem does it solve?
+
 For avid readers and book collectors, keeping track of a growing library can be challenging. NovelSeeker addresses this problem by providing a user-friendly interface for searching, saving, and categorizing books. It aims to enhance the reading experience by offering a centralized platform where users can curate their personalized libraries.
 
 NovelSeeker also tackles the need for a secure and personalized space. Through user authentication, the platform ensures that users can not only explore but also save and retrieve their book collections securely.
 
 In summary, NovelSeeker seeks to streamline the way book enthusiasts interact with their literary world, offering an organized and accessible platform for an enhanced reading experience.
 
+[Top](#novelseeker) | [Table of Contents](#table-of-contents)
+
 ## Tools
 
-- **Node.js:** JavaScript runtime for server-side development.
-- **npm (Node Package Manager):** Package manager for Node.js to manage project dependencies.
-- **Git:** Version control system for tracking changes in the code.
+- **Node.js (JavaScript Runtime):** A robust server-side JavaScript runtime that enables the execution of server-side code, providing the foundation for NovelSeeker's backend functionality.
+
+- **npm (Node Package Manager):** As the package manager for Node.js, npm simplifies the management of project dependencies, ensuring a smooth integration of libraries and packages that NovelSeeker relies on.
+
+- **Git (Version Control System):** Git serves as the version control system for NovelSeeker, enabling efficient tracking of code changes, collaboration among developers, and the ability to revert to previous states. This ensures a well-organized and collaborative development process.
 
 [Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
 ## Technology Stack
 
+NovelSeeker leverages a robust and versatile technology stack to ensure efficient development and seamless functionality across its server and client components.
+
 ### Root Package.json
 
 #### Project Commands/Scripts
 
-- **start:** Run the server using `node server/server.js`.
-- **develop:** Concurrently run server and client development environments.
+- **start:** Initiates the server using `node server/server.js`.
+- **develop:** Concurrently runs server and client development environments.
 - **install:** Install server and client dependencies.
-- **build:** Build the client using `npm run build`.
+- **build:** Compiles the client using `npm run build`.
 
 #### Dev Dependencies
 
 - **concurrently:** ^8.2.0
-  - Tool for running multiple commands concurrently during development.
+  - Facilitates the concurrent execution of multiple commands during development.
 
 ### Server Package.json
 
 #### Project Commands/Scripts
 
-- **start:** Run the server using `node server.js`.
-- **watch:** Run the server using nodemon for automatic restarts.
+- **start:** Launches the server using `node server.js`.
+- **watch:** Operates the server using nodemon for automatic restarts.
 
 #### Dependencies
 
@@ -202,50 +210,64 @@ Before proceeding with the installation, make sure to have the following prerequ
 
 2. **MongoDB:** This project uses MongoDB as the database, make sure to have MongoDB installed and running. Download MongoDB from the [official website](https://www.mongodb.com/try/download/community).
 
-#### Step-by-Step Instructions
+### Step-by-Step Instructions
+
+Follow these step-by-step instructions to set up NovelSeeker on your local machine:
 
 1. **Clone the Repository:**
 
-   ```zsh
+   Open your terminal and run the following command to clone the NovelSeeker repository:
+   ```
    git clone git@github.com:Clkwong3/NovelSeeker.git
    ```
 
 2. **Install Dependencies:**
 
-   ```
-   # Install server dependencies
-   cd server
-   npm install
+    - Navigate into the server directory using the terminal:
+      ```
+      cd NovelSeeker/server
+      ```
 
-   # Install client dependencies
-   cd ../client
-   npm install
-   ```
+    - Install server dependencies:
+      ```
+      npm install
+      ```
+
+    - Move back to the root directory and navigate into the client directory:
+      ```
+      cd ../client
+      ```
+
+    - Install client dependencies: 
+      ```
+      npm install
+      ```
 
 3. **Configure Database Connection:**
 
-   - In the `server/config/connection.js` file, adjust the MongoDB connection URI as needed.
+   - Open the `server/config/connection.js` file in your preferred code editor. 
+   - Adjust the MongoDB connection URI as needed to match your local MongoDB setup.
 
 4. **Run the Project:**
 
-   - Run the server side by executing the following command from the server directory:
-
+   - To start the server, run the following command from the server directory:
      ```
-     cd server
+     cd NovelSeeker/server
      npm start
      ```
 
-   - Run the client side by executing the following command from the client directory:
-
+   - To launch the client, run the following command from the client directory:
      ```
-     cd client
+     cd NovelSeeker/client
      npm run dev
      ```
 
-   - Run the both sides concurrently using the following command from the root directory:
+   - If you want to run both the server and client concurrently, use the following command from the root directory:
      ```
      npm run develop
      ```
+
+Now, NovelSeeker should be up and running on your local machine. Access it through your preferred web browser and start exploring and managing your favorite novels!
 
 [Top](#novelseeker) | [Table of Contents](#table-of-contents)
 
