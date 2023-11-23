@@ -404,9 +404,7 @@ Feel free to contribute additional tests or enhance existing ones to improve the
 
 ## Links
 
-Here is a small collection of helpful links that helped my understanding of GraphQL, covering topics from Apollo Server documentation to in-depth tutorials on building schemas and refactoring practices. You will also find YouTube playlists on GraphQL and JWT authentication. 
-
-At the bottom is a live demo of the NovelSeeker project deployed on Heroku for practical insights and the starter code if you would like to give this project a try.
+Here is a small collection of helpful links that helped my understanding of GraphQL, covering topics from Apollo Server documentation to in-depth tutorials on building schemas and refactoring practices. You will also find YouTube playlists on GraphQL and JWT authentication.
 
 ### GraphQL Tutorials
 
@@ -437,11 +435,8 @@ At the bottom is a live demo of the NovelSeeker project deployed on Heroku for p
 
 ### Project Demo
 
-- [Heroku Deployment](https://warm-beyond-71834-7ceb3704c7cf.herokuapp.com/) - Explore the live demo of the NovelSeeker project on Heroku.
-
-### Starter Code
-
 - [GitHub Repository](https://github.com/coding-boot-camp/solid-broccoli) - If you'd like to give this project a try, find the starter code on GitHub.
+
 
 Feel free to use these resources to enhance your understanding of GraphQL!
 
