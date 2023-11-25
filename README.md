@@ -433,10 +433,9 @@ Here is a small collection of helpful links that helped my understanding of Grap
   - [JWT Authentication](https://www.youtube.com/watch?v=enopDSs3DRw) - Learn about JWT authentication with Traversy Media.
   - [MERN Stack Tutorial](https://www.youtube.com/watch?v=Ejg7es3ba2k) - A tutorial covering the MERN (MongoDB, Express.js, React, Node.js) stack.
 
-### Project Demo
+### Starter Code
 
 - [GitHub Repository](https://github.com/coding-boot-camp/solid-broccoli) - If you'd like to give this project a try, find the starter code on GitHub.
-
 
 Feel free to use these resources to enhance your understanding of GraphQL!
 
